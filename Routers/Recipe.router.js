@@ -1,0 +1,15 @@
+import express from "express";
+import { setRecipes,setRecipe,showAllRecipe,findById,findByCategory,findByUser,deleteAll,deleteById,updateById,updateAllCateg} from "../Controller/Resipe.controller.js";
+import { auth } from "../Middleware/auth.js";
+const router = express.Router();
+router.post("/setRecipes",auth,setRecipes);
+router.post("/setRecipe",auth,setRecipe);
+router.get("/findAll",showAllRecipe);
+router.get("/findById/:id",findById);
+router.get("/findByCategory",findByCategory);
+router.get("/findByUser",auth,findByUser);
+router.delete("/deleteById/:id",auth,deleteById);
+router.delete("/deleteAll",auth,deleteAll);
+router.patch("/updateByID/:id",auth,updateById);
+router.put("/updateAll",auth,updateAllCateg);
+export default router;
